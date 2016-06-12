@@ -2,7 +2,6 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 
-
 static const int RXPin = 0, TXPin = 1;
 static const uint32_t GPSBaud = 9600;
 
@@ -45,6 +44,7 @@ void loop()
     Serial.print(F(" km/h="));
     Serial.println(gps.speed.kmph()); 
     speed=gps.speed.kmph();
+    //calculate the frequency with map()
     freq = map(speed, 0, 100, 0, 160);
     DDS.setfreq(freq, phase);   
   }
